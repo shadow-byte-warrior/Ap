@@ -2,28 +2,60 @@ import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import Logo from "@/components/Logo";
 import SocialBar from "@/components/SocialBar";
+import ElectricBorder from "@/components/ElectricBorder";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { useRef } from "react";
 
 const projects = [
   {
+    id: 1,
     title: "AI Healthcare System",
-    tech: "Streamlit + Python + ML",
+    tech: ["Streamlit", "Python", "ML"],
     year: "2025",
     description: "Full-stack web application integrating machine learning models for healthcare predictions with modular backend architecture.",
+    color: "#5227FF",
+    hasDemo: true,
+    hasGithub: true,
   },
   {
-    title: "E-Commerce Web Application",
-    tech: "Java + Angular + MySQL",
+    id: 2,
+    title: "Graphical Password Authentication",
+    tech: ["React", "Node.js", "Security"],
+    year: "2024",
+    description: "Users can set passwords using images and their sequence using this project, which implements the same concept for password authentication as recaptcha.",
+    color: "#FF6B35",
+    hasDemo: true,
+    hasGithub: true,
+  },
+  {
+    id: 3,
+    title: "Breach Checker",
+    tech: ["Python", "API", "Security"],
+    year: "2024",
+    description: "This website checks if your passwords or critical information has been leaked anywhere in the internet or not. Completely free, secure and not vulnerable to attacks.",
+    color: "#00D4FF",
+    hasDemo: true,
+    hasGithub: true,
+  },
+  {
+    id: 4,
+    title: "E-Commerce Platform",
+    tech: ["Java", "Angular", "MySQL"],
     year: "2025",
     description: "Full-stack web platform using Java Spring Boot and Angular with REST APIs for high-performance data communication.",
+    color: "#FFD700",
+    hasDemo: true,
+    hasGithub: true,
   },
 ];
 
 const Projects = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
   return (
     <PageTransition>
-      <div className="min-h-screen bg-background relative">
+      <div className="min-h-screen bg-background relative overflow-hidden">
         <Logo />
         <SocialBar />
 
@@ -31,60 +63,137 @@ const Projects = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
-          className="fixed top-8 right-8 z-50"
+          className="fixed top-6 right-6 md:top-8 md:right-8 z-50"
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm tracking-widest uppercase hover:text-accent transition-colors"
+            className="flex items-center gap-2 text-xs md:text-sm tracking-widest uppercase hover:text-accent transition-colors"
           >
             <ArrowLeft size={16} />
-            Back
+            <span className="hidden sm:inline">Back</span>
           </Link>
         </motion.div>
 
-        <div className="container mx-auto px-8 py-32 md:py-40">
+        {/* Background WORK text */}
+        <div className="absolute top-1/3 right-0 pointer-events-none select-none opacity-5">
+          <span className="text-[15vw] font-display font-bold text-foreground">
+            WORK
+          </span>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 py-24 md:py-32 lg:py-40">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-5xl md:text-7xl font-display font-bold italic mb-16"
+            className="text-4xl sm:text-5xl md:text-7xl font-display font-bold italic mb-8 md:mb-16"
           >
             PROJECTS
           </motion.h1>
 
-          <div className="space-y-12">
+          {/* Horizontal Scrolling Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 md:gap-8 overflow-x-auto pb-8 -mx-4 px-4 md:-mx-8 md:px-8 scrollbar-hide snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {projects.map((project, index) => (
               <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + index * 0.15 }}
-                className="group relative border-b border-border pb-12"
+                key={project.id}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 + index * 0.1 }}
+                className="flex-shrink-0 w-[85vw] sm:w-[70vw] md:w-[400px] lg:w-[450px] snap-center"
               >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-4 mb-3">
-                      <span className="text-sm text-muted-foreground font-mono">{project.year}</span>
-                      <span className="text-sm text-accent font-medium">{project.tech}</span>
+                <ElectricBorder
+                  color={project.color}
+                  speed={1.2}
+                  chaos={0.15}
+                  borderRadius={24}
+                  className="h-full"
+                >
+                  <div className="bg-card/90 backdrop-blur-sm rounded-3xl p-6 md:p-8 h-full min-h-[320px] flex flex-col">
+                    {/* Header with year */}
+                    <div className="flex items-start justify-between mb-4">
+                      <span className="text-xs font-mono text-muted-foreground">
+                        {project.year}
+                      </span>
+                      <div className="flex gap-2">
+                        {project.hasGithub && (
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="p-2 rounded-full bg-foreground text-background hover:bg-accent transition-colors"
+                          >
+                            <Github size={16} />
+                          </motion.button>
+                        )}
+                      </div>
                     </div>
-                    <h2 className="text-2xl md:text-4xl font-display font-bold mb-4 group-hover:text-accent transition-colors duration-300">
+
+                    {/* Title */}
+                    <h2 className="text-xl md:text-2xl font-display font-bold mb-4 text-foreground">
                       {project.title}
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl leading-relaxed">
+
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed flex-grow mb-6">
                       {project.description}
                     </p>
+
+                    {/* Tech Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-3 py-1 bg-muted/50 rounded-full text-muted-foreground"
+                        >
+                          #{tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Visit Button */}
+                    {project.hasDemo && (
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full flex items-center justify-center gap-2 py-3 bg-background text-foreground rounded-xl font-medium hover:bg-muted transition-colors border border-border"
+                      >
+                        Visit
+                        <ExternalLink size={16} />
+                      </motion.button>
+                    )}
                   </div>
-                  <motion.div
-                    whileHover={{ x: 5 }}
-                    className="flex items-center gap-2 text-muted-foreground group-hover:text-accent transition-colors cursor-pointer"
-                  >
-                    <span className="text-sm uppercase tracking-widest">View</span>
-                    <ExternalLink size={16} />
-                  </motion.div>
-                </div>
+                </ElectricBorder>
               </motion.div>
             ))}
           </div>
+
+          {/* Swipe hint for mobile */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="mt-8 text-center md:hidden"
+          >
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+              <span>Swipe</span>
+              <motion.span
+                animate={{ x: [0, 10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Bottom swipe indicator */}
+        <div className="fixed bottom-8 right-8 pointer-events-none select-none opacity-10 hidden md:block">
+          <span className="text-6xl md:text-8xl font-display font-bold italic text-foreground">
+            Swipe
+          </span>
         </div>
       </div>
     </PageTransition>
