@@ -6,8 +6,8 @@ interface EdgeNavigationProps {
 }
 
 const navItems = [
-  { label: "Resume", path: "/resume", position: "left-top" },
-  { label: "Projects", path: "/projects", position: "left-bottom" },
+  { label: "Resume", path: "/resume", position: "top-left" },
+  { label: "Projects", path: "/projects", position: "left-top" },
   { label: "About", path: "/about", position: "bottom-left" },
   { label: "Skills", path: "/skills", position: "bottom-right" },
   { label: "Experience", path: "/experience", position: "right" },
@@ -34,10 +34,10 @@ const EdgeNavigation = ({ isExpanded }: EdgeNavigationProps) => {
 
   const getPositionClasses = (position: string) => {
     switch (position) {
+      case "top-left":
+        return "fixed top-6 lg:top-10 left-20 lg:left-24";
       case "left-top":
-        return "fixed left-6 lg:left-10 top-[30%] -translate-y-1/2 writing-vertical rotate-180";
-      case "left-bottom":
-        return "fixed left-6 lg:left-10 bottom-[30%] translate-y-1/2 writing-vertical rotate-180";
+        return "fixed left-20 lg:left-24 top-[40%] -translate-y-1/2 writing-vertical rotate-180";
       case "bottom-left":
         return "fixed bottom-6 lg:bottom-10 left-[30%] -translate-x-1/2";
       case "bottom-right":
