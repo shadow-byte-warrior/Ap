@@ -37,7 +37,7 @@ const EdgeNavigation = ({ isExpanded }: EdgeNavigationProps) => {
       case "top-left":
         return "fixed top-6 lg:top-10 left-20 lg:left-24";
       case "left-top":
-        return "fixed left-20 lg:left-24 top-[40%] -translate-y-1/2 writing-vertical rotate-180";
+        return "fixed left-[70px] lg:left-[90px] top-[50%] -translate-y-1/2 writing-vertical rotate-180";
       case "bottom-left":
         return "fixed bottom-6 lg:bottom-10 left-[30%] -translate-x-1/2";
       case "bottom-right":
