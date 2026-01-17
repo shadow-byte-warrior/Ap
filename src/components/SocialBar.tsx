@@ -26,7 +26,7 @@ const SocialBar = () => {
 
   return (
     <motion.div
-      className="social-bar hidden md:flex"
+      className="fixed left-6 bottom-0 hidden md:flex flex-col items-center gap-4 z-40"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -39,12 +39,13 @@ const SocialBar = () => {
           rel="noopener noreferrer"
           variants={itemVariants}
           whileHover={{ scale: 1.2, y: -2 }}
-          className="text-foreground/60 hover:text-accent transition-colors duration-300"
+          className="p-2 text-foreground/60 hover:text-accent transition-colors duration-300 bg-background/80 backdrop-blur-sm rounded-full"
           aria-label={social.label}
         >
-          <social.icon size={20} />
+          <social.icon size={18} />
         </motion.a>
       ))}
+      <div className="w-px h-20 bg-foreground/20" />
     </motion.div>
   );
 };

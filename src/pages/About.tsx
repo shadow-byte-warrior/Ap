@@ -6,6 +6,7 @@ import FloatingElement from "@/components/FloatingElement";
 import AnimatedText from "@/components/AnimatedText";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const About = () => {
   return (
@@ -16,9 +17,9 @@ const About = () => {
 
         {/* Back button */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.5 }}
           className="fixed top-8 right-8 z-50"
         >
           <Link
@@ -30,15 +31,20 @@ const About = () => {
           </Link>
         </motion.div>
 
-        <div className="container mx-auto px-8 py-32 md:py-40">
+        <div className="container mx-auto px-8 md:px-16 py-32 md:py-40">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
-            <div className="space-y-8">
+            <motion.div 
+              className="space-y-8 order-2 md:order-1"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="section-title text-5xl md:text-7xl"
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="text-5xl md:text-7xl font-display font-bold italic"
               >
                 ABOUT
               </motion.h1>
@@ -46,13 +52,13 @@ const About = () => {
               <AnimatedText
                 text="I'm a Software Developer passionate about AI and Machine Learning. I adore designing user-friendly applications that are both simple and elegant yet scalable."
                 className="text-lg text-muted-foreground leading-relaxed"
-                delay={0.3}
+                delay={0.5}
               />
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+                transition={{ delay: 0.9 }}
                 className="text-muted-foreground leading-relaxed"
               >
                 I consider myself to be a lifelong learner. I'm proficient in data structures, 
@@ -63,39 +69,58 @@ const About = () => {
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 1.1 }}
                 className="text-muted-foreground leading-relaxed"
               >
                 Currently pursuing BTech in Artificial Intelligence and Data Science at EASA College 
                 of Engineering Technology, Coimbatore.
               </motion.p>
-            </div>
+            </motion.div>
 
-            {/* Floating Spaceman Illustration */}
-            <div className="relative flex justify-center items-center">
-              <FloatingElement duration={8} y={30}>
+            {/* Profile Photo */}
+            <div className="relative flex justify-center items-center order-1 md:order-2">
+              <FloatingElement duration={6} y={15}>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.5 }}
-                  className="w-64 h-64 md:w-80 md:h-80 relative"
+                  className="relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent rounded-full blur-2xl" />
-                  <svg viewBox="0 0 200 200" className="w-full h-full">
-                    {/* Astronaut illustration */}
-                    <circle cx="100" cy="80" r="35" className="fill-foreground/10 stroke-foreground stroke-2" />
-                    <circle cx="100" cy="80" r="25" className="fill-background stroke-foreground stroke-2" />
-                    <ellipse cx="100" cy="140" rx="30" ry="40" className="fill-foreground/10 stroke-foreground stroke-2" />
-                    <line x1="70" y1="130" x2="50" y2="160" className="stroke-foreground stroke-2" />
-                    <line x1="130" y1="130" x2="150" y2="160" className="stroke-foreground stroke-2" />
-                    <line x1="90" y1="175" x2="80" y2="200" className="stroke-foreground stroke-2" />
-                    <line x1="110" y1="175" x2="120" y2="200" className="stroke-foreground stroke-2" />
-                    {/* Stars */}
-                    <circle cx="30" cy="50" r="2" className="fill-accent" />
-                    <circle cx="170" cy="30" r="3" className="fill-accent" />
-                    <circle cx="160" cy="150" r="2" className="fill-accent" />
-                    <circle cx="40" cy="170" r="2" className="fill-accent" />
-                  </svg>
+                  {/* Decorative ring */}
+                  <motion.div
+                    className="absolute -inset-4 rounded-full border-2 border-accent/30"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  />
+                  
+                  {/* Glow effect */}
+                  <div className="absolute -inset-8 bg-gradient-to-br from-accent/20 via-transparent to-accent/10 rounded-full blur-2xl" />
+                  
+                  {/* Profile image */}
+                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                    <img
+                      src={profilePhoto}
+                      alt="Arun Pandian"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Floating accent dots */}
+                  <motion.div
+                    className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-accent"
+                    animate={{ y: [-5, 5, -5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="absolute -bottom-4 -left-4 w-3 h-3 rounded-full bg-accent/70"
+                    animate={{ y: [5, -5, 5] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                  />
+                  <motion.div
+                    className="absolute top-1/2 -right-8 w-2 h-2 rounded-full bg-accent/50"
+                    animate={{ x: [-3, 3, -3] }}
+                    transition={{ duration: 2.5, repeat: Infinity }}
+                  />
                 </motion.div>
               </FloatingElement>
             </div>

@@ -1,15 +1,16 @@
-import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import YinYang from "@/components/YinYang";
 import EdgeNavigation from "@/components/EdgeNavigation";
 import SocialBar from "@/components/SocialBar";
 import Logo from "@/components/Logo";
+import { useTheme } from "@/components/ThemeProvider";
 
 const Index = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isExpanded = true; // Always show navigation
 
   const handleYinYangClick = () => {
-    setIsExpanded(!isExpanded);
+    toggleTheme();
   };
 
   return (
@@ -29,39 +30,33 @@ const Index = () => {
           }}
           className="relative z-10"
         >
-          <YinYang onClick={handleYinYangClick} isDark={isExpanded} />
+          <YinYang onClick={handleYinYangClick} isDark={theme === "dark"} />
         </motion.div>
       </div>
 
       {/* Background decorative elements */}
       <AnimatePresence>
-        {isExpanded && (
-          <>
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.03, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.6 }}
-              className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent blur-3xl pointer-events-none"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 0.03, scale: 1 }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground blur-3xl pointer-events-none"
-            />
-          </>
-        )}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.03, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent blur-3xl pointer-events-none"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 0.02, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground blur-3xl pointer-events-none"
+        />
       </AnimatePresence>
 
       {/* Subtle grid pattern */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.02]"
+        className="fixed inset-0 pointer-events-none opacity-[0.015]"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
                             linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px'
+          backgroundSize: '80px 80px'
         }}
       />
     </div>
