@@ -19,121 +19,56 @@ const YinYang = ({ onClick, isDark = false }: YinYangProps) => {
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         className="relative"
       >
+        {/* Martial arts style Yin Yang - clean, bold, simple */}
         <svg
-          width="160"
-          height="160"
-          viewBox="0 0 160 160"
-          className="drop-shadow-2xl"
+          width="180"
+          height="180"
+          viewBox="0 0 180 180"
+          className="drop-shadow-lg"
         >
-          {/* Definitions for gradients and shadows */}
-          <defs>
-            {/* White side gradient */}
-            <linearGradient id="whiteGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="50%" stopColor="#f5f5f5" />
-              <stop offset="100%" stopColor="#e8e8e8" />
-            </linearGradient>
-            
-            {/* Dark side gradient */}
-            <linearGradient id="darkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#2a2a3d" />
-              <stop offset="50%" stopColor="#1a1a2e" />
-              <stop offset="100%" stopColor="#0f0f1a" />
-            </linearGradient>
-            
-            {/* Inner shadow for depth */}
-            <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
-              <feOffset in="blur" dx="2" dy="2" result="offsetBlur" />
-              <feComposite in="SourceGraphic" in2="offsetBlur" operator="over" />
-            </filter>
-            
-            {/* Outer glow */}
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
-              <feMerge>
-                <feMergeNode in="coloredBlur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-
-            {/* 3D sphere effect for small circles */}
-            <radialGradient id="whiteSphereGradient" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="70%" stopColor="#e0e0e0" />
-              <stop offset="100%" stopColor="#c0c0c0" />
-            </radialGradient>
-            
-            <radialGradient id="darkSphereGradient" cx="30%" cy="30%" r="70%">
-              <stop offset="0%" stopColor="#3a3a4d" />
-              <stop offset="70%" stopColor="#1a1a2e" />
-              <stop offset="100%" stopColor="#0a0a15" />
-            </radialGradient>
-          </defs>
-          
-          {/* Outer ring shadow */}
+          {/* Outer circle - thick bold stroke */}
           <circle
-            cx="80"
-            cy="80"
-            r="75"
+            cx="90"
+            cy="90"
+            r="85"
             fill="none"
-            stroke="rgba(0,0,0,0.1)"
-            strokeWidth="3"
+            stroke="currentColor"
+            strokeWidth="4"
+            className="text-foreground"
           />
           
-          {/* Main outer circle with border */}
-          <circle
-            cx="80"
-            cy="80"
-            r="74"
-            fill="none"
-            stroke="#1a1a2e"
-            strokeWidth="2"
-          />
-          
-          {/* White (light) half */}
+          {/* White/Light half */}
           <path
-            d="M80,6 A74,74 0 0,0 80,154 A37,37 0 0,0 80,80 A37,37 0 0,1 80,6"
-            fill="url(#whiteGradient)"
+            d="M90,5 A85,85 0 0,0 90,175 A42.5,42.5 0 0,0 90,90 A42.5,42.5 0 0,1 90,5"
+            className="fill-background"
           />
           
-          {/* Dark half */}
+          {/* Black/Dark half */}
           <path
-            d="M80,6 A74,74 0 0,1 80,154 A37,37 0 0,1 80,80 A37,37 0 0,0 80,6"
-            fill="url(#darkGradient)"
+            d="M90,5 A85,85 0 0,1 90,175 A42.5,42.5 0 0,1 90,90 A42.5,42.5 0 0,0 90,5"
+            className="fill-foreground"
           />
           
-          {/* Small white circle (in dark half) - 3D sphere effect */}
+          {/* Small white circle (in dark half) */}
           <circle
-            cx="80"
-            cy="117"
-            r="12"
-            fill="url(#whiteSphereGradient)"
-            filter="url(#glow)"
+            cx="90"
+            cy="132.5"
+            r="14"
+            className="fill-background"
           />
           
-          {/* Small dark circle (in white half) - 3D sphere effect */}
+          {/* Small dark circle (in white half) */}
           <circle
-            cx="80"
-            cy="43"
-            r="12"
-            fill="url(#darkSphereGradient)"
-          />
-          
-          {/* Highlight on white side for 3D effect */}
-          <ellipse
-            cx="55"
-            cy="50"
-            rx="20"
-            ry="15"
-            fill="rgba(255,255,255,0.3)"
-            transform="rotate(-30, 55, 50)"
+            cx="90"
+            cy="47.5"
+            r="14"
+            className="fill-foreground"
           />
         </svg>
       </motion.div>
       
       <motion.p
-        className="text-center mt-6 text-sm tracking-[0.3em] uppercase font-body text-muted-foreground"
+        className="text-center mt-8 text-sm tracking-[0.3em] uppercase font-body text-accent"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}

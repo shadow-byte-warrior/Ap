@@ -3,7 +3,7 @@ import PageTransition from "@/components/PageTransition";
 import Logo from "@/components/Logo";
 import SocialBar from "@/components/SocialBar";
 import FloatingElement from "@/components/FloatingElement";
-import AnimatedText from "@/components/AnimatedText";
+import ElectricBorder from "@/components/ElectricBorder";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
@@ -15,70 +15,84 @@ const About = () => {
         <Logo />
         <SocialBar />
 
+        {/* Background ABOUT text */}
+        <div className="absolute top-16 md:top-24 left-4 md:left-16 pointer-events-none select-none">
+          <span className="text-[20vw] md:text-[15vw] font-display font-bold text-foreground/5">
+            ABOUT
+          </span>
+        </div>
+
         {/* Back button */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
-          className="fixed top-8 right-8 z-50"
+          className="fixed top-6 right-6 md:top-8 md:right-8 z-50"
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm tracking-widest uppercase hover:text-accent transition-colors"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-foreground/30 hover:border-accent hover:text-accent transition-colors"
           >
-            <ArrowLeft size={16} />
-            Back
+            <ArrowLeft size={18} />
           </Link>
         </motion.div>
 
-        <div className="container mx-auto px-8 md:px-16 py-32 md:py-40">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
+        <div className="container mx-auto px-4 sm:px-6 md:px-16 py-24 md:py-32 lg:py-40">
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-start">
+            {/* Text Content - Takes up more space */}
             <motion.div 
-              className="space-y-8 order-2 md:order-1"
+              className="lg:col-span-3 space-y-6 order-2 lg:order-1 z-10"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-5xl md:text-7xl font-display font-bold italic"
+              <ElectricBorder 
+                color="hsl(var(--accent))" 
+                speed={0.8} 
+                chaos={0.08} 
+                borderRadius={16}
               >
-                ABOUT
-              </motion.h1>
+                <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 space-y-6">
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
+                  >
+                    I'm a Software Developer at Zoho Corporation. I adore designing 
+                    user-friendly websites that are both simple and elegant yet 
+                    scalable. I consider myself to be a lifelong learner. I'm 
+                    proficient in data structures and algorithms.
+                  </motion.p>
 
-              <AnimatedText
-                text="I'm a Software Developer passionate about AI and Machine Learning. I adore designing user-friendly applications that are both simple and elegant yet scalable."
-                className="text-lg text-muted-foreground leading-relaxed"
-                delay={0.5}
-              />
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 }}
+                    className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
+                  >
+                    I'm also interested in Machine Learning, and I adore 
+                    experimenting with new ideas and putting together fantastic 
+                    projects. I've always been interested in robotics and built 
+                    around seven of them when I was 15 years old.
+                  </motion.p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9 }}
-                className="text-muted-foreground leading-relaxed"
-              >
-                I consider myself to be a lifelong learner. I'm proficient in data structures, 
-                algorithms, and have experience building full-stack applications with modern technologies. 
-                My journey includes working on healthcare AI systems and e-commerce platforms.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1 }}
-                className="text-muted-foreground leading-relaxed"
-              >
-                Currently pursuing BTech in Artificial Intelligence and Data Science at EASA College 
-                of Engineering Technology, Coimbatore.
-              </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.9 }}
+                    className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
+                  >
+                    I'm a Crypto junkie and a Pianist contrasting right? I've been 
+                    fascinated by technology since I was a child and grown up as a 
+                    Tech Savvy and Build few Enterprise level Softwares.
+                  </motion.p>
+                </div>
+              </ElectricBorder>
             </motion.div>
 
             {/* Profile Photo */}
-            <div className="relative flex justify-center items-center order-1 md:order-2">
+            <div className="lg:col-span-2 relative flex justify-center lg:justify-end items-start order-1 lg:order-2">
               <FloatingElement duration={6} y={15}>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -86,41 +100,25 @@ const About = () => {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="relative"
                 >
-                  {/* Decorative ring */}
+                  {/* Decorative asterisk */}
                   <motion.div
-                    className="absolute -inset-4 rounded-full border-2 border-accent/30"
+                    className="absolute -top-4 -right-4 md:-top-6 md:-right-6 text-accent"
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  />
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  >
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="currentColor">
+                      <path d="M20 0L23 17L40 20L23 23L20 40L17 23L0 20L17 17Z" />
+                    </svg>
+                  </motion.div>
                   
-                  {/* Glow effect */}
-                  <div className="absolute -inset-8 bg-gradient-to-br from-accent/20 via-transparent to-accent/10 rounded-full blur-2xl" />
-                  
-                  {/* Profile image */}
-                  <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-background shadow-2xl">
+                  {/* Profile image - cartoon style */}
+                  <div className="relative w-48 h-auto sm:w-56 md:w-72 lg:w-80">
                     <img
                       src={profilePhoto}
                       alt="Arun Pandian"
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto object-contain"
                     />
                   </div>
-                  
-                  {/* Floating accent dots */}
-                  <motion.div
-                    className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-accent"
-                    animate={{ y: [-5, 5, -5] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-                  <motion.div
-                    className="absolute -bottom-4 -left-4 w-3 h-3 rounded-full bg-accent/70"
-                    animate={{ y: [5, -5, 5] }}
-                    transition={{ duration: 4, repeat: Infinity }}
-                  />
-                  <motion.div
-                    className="absolute top-1/2 -right-8 w-2 h-2 rounded-full bg-accent/50"
-                    animate={{ x: [-3, 3, -3] }}
-                    transition={{ duration: 2.5, repeat: Infinity }}
-                  />
                 </motion.div>
               </FloatingElement>
             </div>
