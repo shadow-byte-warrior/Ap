@@ -35,19 +35,19 @@ const EdgeNavigation = ({ isExpanded }: EdgeNavigationProps) => {
   const getPositionClasses = (position: string) => {
     switch (position) {
       case "left-top":
-        return "fixed left-4 md:left-8 top-1/4 md:top-1/3 -translate-y-1/2 writing-vertical rotate-180";
+        return "fixed left-6 lg:left-10 top-[30%] -translate-y-1/2 writing-vertical rotate-180";
       case "left-bottom":
-        return "fixed left-4 md:left-8 bottom-1/4 md:bottom-1/3 translate-y-1/2 writing-vertical rotate-180";
+        return "fixed left-6 lg:left-10 bottom-[30%] translate-y-1/2 writing-vertical rotate-180";
       case "bottom-left":
-        return "fixed bottom-4 md:bottom-8 left-1/4 md:left-1/3 -translate-x-1/2";
+        return "fixed bottom-6 lg:bottom-10 left-[30%] -translate-x-1/2";
       case "bottom-right":
-        return "fixed bottom-4 md:bottom-8 right-1/4 md:right-1/3 translate-x-1/2";
+        return "fixed bottom-6 lg:bottom-10 right-[30%] translate-x-1/2";
       case "right":
-        return "fixed right-4 md:right-8 top-1/3 -translate-y-1/2 writing-vertical";
+        return "fixed right-6 lg:right-10 top-[35%] -translate-y-1/2 writing-vertical";
       case "right-bottom":
-        return "fixed right-4 md:right-8 top-2/3 -translate-y-1/2 writing-vertical";
+        return "fixed right-6 lg:right-10 top-[65%] -translate-y-1/2 writing-vertical";
       case "top-right":
-        return "fixed top-4 md:top-8 right-4 md:right-8";
+        return "fixed top-6 lg:top-10 right-6 lg:right-10";
       default:
         return "";
     }
@@ -69,14 +69,14 @@ const EdgeNavigation = ({ isExpanded }: EdgeNavigationProps) => {
           {item.isExternal ? (
             <a
               href={item.path}
-              className="nav-link text-xs md:text-sm hover:text-accent transition-colors duration-300"
+              className="nav-link text-[11px] md:text-xs lg:text-sm hover:text-accent transition-colors duration-300 whitespace-nowrap"
             >
               {item.label}
             </a>
           ) : (
             <Link
               to={item.path}
-              className="nav-link text-xs md:text-sm hover:text-accent transition-colors duration-300"
+              className="nav-link text-[11px] md:text-xs lg:text-sm hover:text-accent transition-colors duration-300 whitespace-nowrap"
             >
               {item.label}
             </Link>
