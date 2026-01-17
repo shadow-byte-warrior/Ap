@@ -22,16 +22,16 @@ const About = () => {
           </span>
         </div>
 
-        {/* Back button */}
+        {/* Centered Back button */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-          className="fixed top-6 right-6 md:top-8 md:right-8 z-50"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50"
         >
           <Link
             to="/"
-            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-foreground/30 hover:border-accent hover:text-accent transition-colors"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-foreground/30 hover:border-accent hover:text-accent transition-colors bg-background/50 backdrop-blur-sm"
           >
             <ArrowLeft size={18} />
           </Link>
@@ -39,7 +39,7 @@ const About = () => {
 
         <div className="container mx-auto px-4 sm:px-6 md:px-16 py-24 md:py-32 lg:py-40">
           <div className="grid lg:grid-cols-5 gap-8 lg:gap-16 items-start">
-            {/* Text Content - Takes up more space */}
+            {/* Text Content */}
             <motion.div 
               className="lg:col-span-3 space-y-6 order-2 lg:order-1 z-10"
               initial={{ opacity: 0, x: -50 }}
@@ -52,17 +52,17 @@ const About = () => {
                 chaos={0.08} 
                 borderRadius={16}
               >
-                <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 space-y-6">
+                <div className="bg-background rounded-2xl p-6 md:p-8 space-y-6">
                   <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
                   >
-                    I'm a Software Developer at Zoho Corporation. I adore designing 
-                    user-friendly websites that are both simple and elegant yet 
-                    scalable. I consider myself to be a lifelong learner. I'm 
-                    proficient in data structures and algorithms.
+                    I specialize in bridging the gap between cutting-edge Artificial Intelligence 
+                    and tangible business value. My focus is on identifying, designing, and integrating 
+                    AI capabilities—like Large Language Models (LLMs) and predictive analytics—into 
+                    products and workflows to drive efficiency, innovation, and competitive advantage.
                   </motion.p>
 
                   <motion.p
@@ -71,10 +71,10 @@ const About = () => {
                     transition={{ delay: 0.7 }}
                     className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
                   >
-                    I'm also interested in Machine Learning, and I adore 
-                    experimenting with new ideas and putting together fantastic 
-                    projects. I've always been interested in robotics and built 
-                    around seven of them when I was 15 years old.
+                    I possess a unique blend of technical understanding and strategic vision, 
+                    allowing me to translate complex AI potential into actionable product roadmaps 
+                    and user-centric features. My work involves leveraging platforms like OpenAI, 
+                    LangChain, and vector databases to solve real-world problems.
                   </motion.p>
 
                   <motion.p
@@ -83,9 +83,9 @@ const About = () => {
                     transition={{ delay: 0.9 }}
                     className="text-base md:text-lg lg:text-xl text-foreground leading-relaxed italic font-body"
                   >
-                    I'm a Crypto junkie and a Pianist contrasting right? I've been 
-                    fascinated by technology since I was a child and grown up as a 
-                    Tech Savvy and Build few Enterprise level Softwares.
+                    From automating complex processes to creating intelligent customer experiences, 
+                    I'm passionate about building enterprise-level software that makes a real impact. 
+                    AI Engineer | MERN STACK | Python | Chatbot Integration | N8N Automation | Generative AI.
                   </motion.p>
                 </div>
               </ElectricBorder>
@@ -111,7 +111,7 @@ const About = () => {
                     </svg>
                   </motion.div>
                   
-                  {/* Profile image - cartoon style */}
+                  {/* Profile image */}
                   <div className="relative w-48 h-auto sm:w-56 md:w-72 lg:w-80">
                     <img
                       src={profilePhoto}
@@ -124,6 +124,18 @@ const About = () => {
             </div>
           </div>
         </div>
+        
+        {/* Grid pattern */}
+        <div 
+          className="fixed inset-0 pointer-events-none opacity-[0.06]"
+          style={{
+            backgroundImage: `
+              linear-gradient(hsl(var(--foreground) / 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--foreground) / 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
       </div>
     </PageTransition>
   );
