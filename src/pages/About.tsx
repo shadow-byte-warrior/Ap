@@ -23,11 +23,11 @@ const About = () => {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="fixed top-4 right-4 md:top-6 md:right-6 z-40"
         >
-          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent shadow-lg">
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent shadow-lg">
             <img
               src={profileRounded}
               alt="Arun Pandian"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top scale-110"
             />
           </div>
         </motion.div>
