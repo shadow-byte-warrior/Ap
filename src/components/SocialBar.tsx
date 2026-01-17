@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter, Facebook, Youtube } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const socials = [
   { icon: Linkedin, href: "https://linkedin.com/in/arunpandian-sh2030", label: "LinkedIn" },
   { icon: Github, href: "https://github.com/Arunpandian", label: "GitHub" },
-  { icon: Twitter, href: "https://twitter.com/Arunpandian", label: "Twitter" },
-  { icon: Facebook, href: "https://facebook.com/Arunpandian", label: "Facebook" },
-  { icon: Youtube, href: "https://youtube.com/@Arunpandian", label: "YouTube" },
   { icon: Mail, href: "mailto:arunpandi47777@gmail.com", label: "Email" },
 ];
 
