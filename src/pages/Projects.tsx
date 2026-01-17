@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import Logo from "@/components/Logo";
 import SocialBar from "@/components/SocialBar";
 import ElectricBorder from "@/components/ElectricBorder";
+import GitHubHeatmap from "@/components/GitHubHeatmap";
 import { useRef } from "react";
 
 import projectUber from "@/assets/project-uber.png";
@@ -108,6 +109,11 @@ const Projects = () => {
               </span>
             </div>
           </motion.div>
+
+          {/* GitHub Activity Heatmap */}
+          <div className="mb-10">
+            <GitHubHeatmap />
+          </div>
 
           <motion.p
             initial={{ opacity: 0 }}
