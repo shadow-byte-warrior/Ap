@@ -111,6 +111,7 @@
   .writing-vertical {
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    letter-spacing: 0.15em;
   }
 
   .magnetic-link {
@@ -120,7 +121,7 @@
 
 @layer components {
   .nav-link {
-    @apply text-sm font-medium tracking-widest uppercase transition-all duration-300 hover:text-accent;
+    @apply text-xs font-medium tracking-[0.2em] uppercase transition-all duration-300 hover:text-accent;
   }
 
   .nav-link-vertical {
