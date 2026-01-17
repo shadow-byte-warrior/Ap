@@ -26,8 +26,8 @@ const App = () => (
         <Sonner />
         <ParticleCanvas />
         <SplashCursor />
-        <MobileNav />
         <BrowserRouter>
+          <MobileNav />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
