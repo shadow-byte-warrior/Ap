@@ -55,22 +55,22 @@ const Resume = () => {
         <Logo />
         <SocialBar />
 
+        {/* Centered Back button */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.5 }}
-          className="fixed top-8 right-8 z-50"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 z-50"
         >
           <Link
             to="/"
-            className="flex items-center gap-2 text-sm tracking-widest uppercase hover:text-accent transition-colors"
+            className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-foreground/30 hover:border-accent hover:text-accent transition-colors bg-background/50 backdrop-blur-sm"
           >
-            <ArrowLeft size={16} />
-            Back
+            <ArrowLeft size={18} />
           </Link>
         </motion.div>
 
-        <div className="container mx-auto px-8 py-32 md:py-40 max-w-4xl">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 py-24 md:py-32 lg:py-40 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -237,6 +237,18 @@ const Resume = () => {
             </motion.section>
           </div>
         </div>
+        
+        {/* Grid pattern */}
+        <div 
+          className="fixed inset-0 pointer-events-none opacity-[0.06] -z-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(hsl(var(--foreground) / 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, hsl(var(--foreground) / 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        />
       </div>
     </PageTransition>
   );

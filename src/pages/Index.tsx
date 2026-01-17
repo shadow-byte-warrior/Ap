@@ -7,7 +7,7 @@ import { useTheme } from "@/components/ThemeProvider";
 
 const Index = () => {
   const { theme, toggleTheme } = useTheme();
-  const isExpanded = true; // Always show navigation
+  const isExpanded = true;
 
   const handleYinYangClick = () => {
     toggleTheme();
@@ -38,25 +38,36 @@ const Index = () => {
       <AnimatePresence>
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.03, scale: 1 }}
+          animate={{ opacity: 0.05, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="fixed top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent blur-3xl pointer-events-none"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 0.02, scale: 1 }}
+          animate={{ opacity: 0.03, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="fixed bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-foreground blur-3xl pointer-events-none"
         />
       </AnimatePresence>
 
-      {/* Subtle grid pattern */}
+      {/* More visible grid pattern */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.015]"
+        className="fixed inset-0 pointer-events-none opacity-[0.08]"
         style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                            linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px'
+          backgroundImage: `
+            linear-gradient(hsl(var(--foreground) / 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--foreground) / 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }}
+      />
+      
+      {/* Dot pattern overlay */}
+      <div 
+        className="fixed inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: `radial-gradient(hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '20px 20px'
         }}
       />
     </div>
