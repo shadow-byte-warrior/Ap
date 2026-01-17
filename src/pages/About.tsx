@@ -6,7 +6,8 @@ import FloatingElement from "@/components/FloatingElement";
 import ElectricBorder from "@/components/ElectricBorder";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.png";
+import avatarCartoon from "@/assets/avatar-cartoon.png";
+import profileRounded from "@/assets/profile-rounded.png";
 
 const About = () => {
   return (
@@ -14,6 +15,22 @@ const About = () => {
       <div className="min-h-screen bg-background relative overflow-hidden">
         <Logo />
         <SocialBar />
+
+        {/* Rounded Profile Photo in top right corner */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="fixed top-4 right-4 md:top-6 md:right-6 z-40"
+        >
+          <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent shadow-lg">
+            <img
+              src={profileRounded}
+              alt="Arun Pandian"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </motion.div>
 
         {/* Background ABOUT text */}
         <div className="absolute top-16 md:top-24 left-4 md:left-16 pointer-events-none select-none">
@@ -91,7 +108,7 @@ const About = () => {
               </ElectricBorder>
             </motion.div>
 
-            {/* Profile Photo */}
+            {/* Cartoon Avatar */}
             <div className="lg:col-span-2 relative flex justify-center lg:justify-end items-start order-1 lg:order-2">
               <FloatingElement duration={6} y={15}>
                 <motion.div
@@ -111,11 +128,11 @@ const About = () => {
                     </svg>
                   </motion.div>
                   
-                  {/* Profile image */}
-                  <div className="relative w-48 h-auto sm:w-56 md:w-72 lg:w-80">
+                  {/* Cartoon Avatar image */}
+                  <div className="relative w-56 h-auto sm:w-64 md:w-80 lg:w-96">
                     <img
-                      src={profilePhoto}
-                      alt="Arun Pandian"
+                      src={avatarCartoon}
+                      alt="Arun Pandian - Cartoon Avatar"
                       className="w-full h-auto object-contain"
                     />
                   </div>
